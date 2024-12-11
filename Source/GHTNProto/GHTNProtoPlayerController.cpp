@@ -45,7 +45,7 @@ void AGHTNProtoPlayerController::BeginPlay()
 
 	if (!plan.empty())
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Plan works! %s"), plan[0]->GetName());
+		UE_LOG(LogTemp, Warning, TEXT("Plan works! %s"), plan[0]->GetName().c_str());
 	}
 }
 

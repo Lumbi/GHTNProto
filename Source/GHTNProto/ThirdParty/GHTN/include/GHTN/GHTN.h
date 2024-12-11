@@ -2,12 +2,15 @@
 
 #include <algorithm>
 #include <array>
+#include <concepts>
 #include <cstdint>
 #include <deque>
+#include <format>
 #include <functional>
 #include <initializer_list>
 #include <memory>
 #include <optional>
+#include <span>
 #include <string>
 #include <tuple>
 #include <type_traits>
@@ -16,10 +19,8 @@
 #include <variant>
 #include <vector>
 
-#if defined(GHTN_EXPORTS)
+#ifdef GHTN_EXPORTS
 #define GHTN_API __declspec(dllexport)
-#elif defined(GHTN_IMPORTS)
-#define GHTN_API __declspec(dllimport)
 #else
-#define GHTN_API
+#define GHTN_API __declspec(dllimport)
 #endif

@@ -10,6 +10,10 @@ public class GHTNProtoTarget : TargetRules
 		Type = TargetType.Game;
 		DefaultBuildSettings = BuildSettingsVersion.V2;
 		IncludeOrderVersion = EngineIncludeOrderVersion.Unreal5_1;
-		ExtraModuleNames.Add("GHTNProto");
-	}
+        CppStandard = CppStandardVersion.Cpp20;
+        bOverrideBuildEnvironment = true;
+        bUseAutoRTFMCompiler = false;
+        ExtraModuleNames.Add("GHTNProto");
+        GlobalDefinitions.Add("FORCE_ANSI_ALLOCATOR=1");
+    }
 }

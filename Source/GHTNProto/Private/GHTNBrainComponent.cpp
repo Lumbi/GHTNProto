@@ -212,7 +212,10 @@ int32 UGHTNBrainComponent::AllTasks(TArray<int32> subtasksHandles)
 			composite->AddSubTask(task);
 		}
 	}
+	
+	return PrivateImpl->Tasks.Emplace(MoveTemp(composite));
 
+	/*
 	if (!composite->GetSubTasks()->empty())
 	{
 		return PrivateImpl->Tasks.Emplace(MoveTemp(composite));
@@ -222,6 +225,7 @@ int32 UGHTNBrainComponent::AllTasks(TArray<int32> subtasksHandles)
 		UE_LOG(LogTemp, Error, TEXT("Could not create 'ALL' task without subtasks"));
 		return UGHTNBrainPrivateImpl::InvalidTaskHandle;
 	}
+	*/
 }
 
 int32 UGHTNBrainComponent::AnyTasks(TArray<int32> subtasksHandles)
@@ -236,6 +240,9 @@ int32 UGHTNBrainComponent::AnyTasks(TArray<int32> subtasksHandles)
 		}
 	}
 
+	return PrivateImpl->Tasks.Emplace(MoveTemp(composite));
+
+	/*
 	if (!composite->GetSubTasks()->empty())
 	{
 		return PrivateImpl->Tasks.Emplace(MoveTemp(composite));
@@ -245,6 +252,7 @@ int32 UGHTNBrainComponent::AnyTasks(TArray<int32> subtasksHandles)
 		UE_LOG(LogTemp, Error, TEXT("Could not create 'ALL' task without subtasks"));
 		return UGHTNBrainPrivateImpl::InvalidTaskHandle;
 	}
+	*/
 }
 
 int32 UGHTNBrainComponent::SetConditions(int32 taskHandle, FGHTNCondition& condition)

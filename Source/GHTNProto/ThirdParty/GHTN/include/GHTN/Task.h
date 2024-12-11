@@ -33,14 +33,9 @@ namespace GHTN
 	public:
 		GHTN_API explicit Task(Operation const*);
 
-		GHTN_API explicit Task(Composition);
+		GHTN_API explicit Task(Composition, std::initializer_list<Task const*> subTasks);
 
-		template<typename TaskContainerType = std::initializer_list<Task const*>>
-		Task(Task::Composition composition, TaskContainerType const& subTasks)
-			: Task(composition)
-		{
-			m_Content = SubTaskContainer(std::begin(subTasks), std::end(subTasks));
-		}
+		GHTN_API explicit Task(Composition);
 
 		~Task() = default;
 
@@ -50,15 +45,15 @@ namespace GHTN
 		GHTN_API Task& operator=(Task&&) noexcept = default;
 
 	public:
-		GHTN_API char const* GetName() const;
+		GHTN_API std::string const& GetName() const;
 
-		GHTN_API void SetName(char const*);
-
-		GHTN_API void AddSubTask(Task const*);
+		GHTN_API void SetName(std::string&&);
 
 		GHTN_API void SetConditions(ConditionTree&&);
 
 		GHTN_API void SetParameter(Parameter::Index, Parameter::Value);
+
+		GHTN_API void AddSubTask(Task const*);
 
 		GHTN_API void AddEffect(Effect&&);
 
